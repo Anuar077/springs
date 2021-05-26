@@ -1,6 +1,6 @@
-package com.example.springs.model;
-
-public enum RoleEnum {
-    USER,
-    ADMIN
-}
+//package com.example.springs.model;
+//
+//public enum RoleEnum {
+//    USER,
+//    ADMIN
+//}

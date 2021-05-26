@@ -10,3 +10,4 @@ public interface CourseContentRepository extends JpaRepository<CourseContents, I
 
     public CourseContents findById(int id);
 }
+

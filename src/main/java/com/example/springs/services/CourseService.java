@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CourseService implements iCourse {
+public class CourseService {
 
     @Autowired
     CourseRepository courseRepository;
@@ -22,18 +22,17 @@ public class CourseService implements iCourse {
     @Autowired
     CourseContentRepository coursecontentRepo;
 
-    public CourseService() {
-    }
+    public CourseService(){}
 
-    public Course addCourseWithContents(CourseRequest courseRequest) {
-        Course course = new Course();
+    public Course addCourseWithContents(CourseRequest courseRequest){
+        Course course =new Course();
         course.setId(courseRequest.id);
         course.setCoursename(courseRequest.coursename);
         course.setCoursecontents(courseRequest.coursecontents
                 .stream()
                 .map(coursecontent -> {
                     CourseContents ccontents = coursecontent;
-                    if (ccontents.getId() > 0) {
+                    if(ccontents.getId() > 0){
                         ccontents = coursecontentRepo.findById(ccontents.getId());
                     }
                     ccontents.addCourse(course);
@@ -44,18 +43,20 @@ public class CourseService implements iCourse {
         return courseRepository.save(course);
     }
 
-    @Override
-    public Course findById(int id) {
-        return null;
-    }
 
-    public Course update(Course course) {
-        return courseRepository.saveAndFlush(course);
-    }
 
-    public void deleteCourseById(int id) {
-        courseRepository.deleteById(id);
-    }
+//    @Override
+//    public Course findById(int id) {
+//        return null;
+//    }
+//
+//    public Course update(Course course) {
+//        return courseRepository.saveAndFlush(course);
+//    }
+//
+//    public void deleteCourseById(int id) {
+//        courseRepository.deleteById(id);
+//    }
 
 
 }
